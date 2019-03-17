@@ -7,7 +7,7 @@ env:
   - GO_ENV=test
 
 services:
-  - postgresql
+  - postgresql: "11"
 
 before_script:
   - psql -c 'create database glapi_test;' -U postgres
