@@ -59,7 +59,9 @@ func App() *buffalo.App {
 		app.Use(translations())
 
 		app.GET("/", HomeHandler)
-
+		app.Resource("/projects", ProjectsResource{})
+		gr := app.Group("/api")
+		gr.Resource("/projects", ProjectsResource{})
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
