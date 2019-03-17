@@ -12,6 +12,7 @@ addons:
 
 env:
   - GO_ENV=test
+  - PGPORT=5433
 
 services:
   - postgresql
