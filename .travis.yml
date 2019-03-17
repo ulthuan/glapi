@@ -3,11 +3,14 @@ language: go
 go:
   - "1.11.x"
 
+addons:
+  postgresql: "11"
+
 env:
   - GO_ENV=test
 
 services:
-  - postgresql: "11"
+  - postgresql
 
 before_script:
   - psql -c 'create database glapi_test;' -U postgres
