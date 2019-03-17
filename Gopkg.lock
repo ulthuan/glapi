@@ -318,7 +318,7 @@
   version = "v3.7.33"
 
 [[projects]]
-  digest = "1:105a7e872d21557f60a23a62aef2df7192bdbd8988944765318dec684006f214"
+  digest = "1:fdc8988093cbbd6cb6290cfe55748a2b7a4374da5fee8944cee8e7a56db39524"
   name = "github.com/gobuffalo/pop"
   packages = [
     ".",
@@ -326,6 +326,7 @@
     "columns",
     "fix",
     "logging",
+    "nulls",
   ]
   pruneopts = "UT"
   revision = "9eeaaa184b5e2f2d98ba1a306447621f64bc1826"
@@ -400,6 +401,14 @@
   pruneopts = "UT"
   revision = "6b08a5c5172ba18946672b49749cde22873dd7c2"
   version = "v3.2.0"
+
+[[projects]]
+  digest = "1:318f1c959a8a740366fce4b1e1eb2fd914036b4af58fbd0a003349b305f118ad"
+  name = "github.com/golang/protobuf"
+  packages = ["proto"]
+  pruneopts = "UT"
+  revision = "b5d812f8a3706043e23a9cd5babf2e5423744d30"
+  version = "v1.3.1"
 
 [[projects]]
   digest = "1:c79fb010be38a59d657c48c6ba1d003a8aa651fa56b579d959d74573b7dff8e1"
@@ -520,6 +529,18 @@
   pruneopts = "UT"
   revision = "7745e382f2e927b7ad1bc04524fa32217acaeb15"
   version = "v1.0.3"
+
+[[projects]]
+  digest = "1:690ebf13351ae302861092f82e4086bdf5a32520ee5a30355401f93138b0659c"
+  name = "github.com/markbates/goth"
+  packages = [
+    ".",
+    "gothic",
+    "providers/github",
+  ]
+  pruneopts = "UT"
+  revision = "157987f620ff2fc5e1f6a1427a3685219fbf6ff4"
+  version = "v1.49.0"
 
 [[projects]]
   digest = "1:fecb0ae22407090e8cceb1b108d1f44576420f8450213c0f18416745d80504eb"
@@ -797,14 +818,27 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:de4815ce3ca5b624af2733716ecd471de1ef50cda8afec39491aab517f73139c"
+  digest = "1:45f882b5eaada06836ad2daaff340e8f0db53917d9df6b1cb4e192a30b5c9cc8"
   name = "golang.org/x/net"
   packages = [
+    "context",
+    "context/ctxhttp",
     "html",
     "html/atom",
   ]
   pruneopts = "UT"
   revision = "9f648a60d9775ef5c977e7669d1673a7a67bef33"
+
+[[projects]]
+  branch = "master"
+  digest = "1:037497a2c592b7aa03789f9d6492d02e7d7d166c0e363c95cb53952cf11c7ab0"
+  name = "golang.org/x/oauth2"
+  packages = [
+    ".",
+    "internal",
+  ]
+  pruneopts = "UT"
+  revision = "e64efc72b421e893cbf63f17ba2221e7d6d0b0f3"
 
 [[projects]]
   branch = "master"
@@ -847,9 +881,18 @@
   revision = "f0bfdbff1f9c986484a9f02fc198b1efcfe76ebe"
 
 [[projects]]
-  digest = "1:c25289f43ac4a68d88b02245742347c94f1e108c534dda442188015ff80669b3"
+  digest = "1:9e29a0ec029d012437d88da3ccccf18adcdce069cab08d462056c2c6bb006505"
   name = "google.golang.org/appengine"
-  packages = ["cloudsql"]
+  packages = [
+    "cloudsql",
+    "internal",
+    "internal/base",
+    "internal/datastore",
+    "internal/log",
+    "internal/remote_api",
+    "internal/urlfetch",
+    "urlfetch",
+  ]
   pruneopts = "UT"
   revision = "e9657d882bb81064595ca3b56cbe2546bbabf7b1"
   version = "v1.4.0"
@@ -874,15 +917,21 @@
     "github.com/gobuffalo/mw-forcessl",
     "github.com/gobuffalo/mw-i18n",
     "github.com/gobuffalo/mw-paramlogger",
+    "github.com/gobuffalo/nulls",
     "github.com/gobuffalo/packr",
     "github.com/gobuffalo/packr/v2",
     "github.com/gobuffalo/pop",
+    "github.com/gobuffalo/pop/nulls",
     "github.com/gobuffalo/suite",
     "github.com/gobuffalo/validate",
+    "github.com/gobuffalo/validate/validators",
     "github.com/gofrs/uuid",
+    "github.com/markbates/going/defaults",
+    "github.com/markbates/goth",
+    "github.com/markbates/goth/gothic",
+    "github.com/markbates/goth/providers/github",
     "github.com/markbates/grift/grift",
     "github.com/pkg/errors",
-    "github.com/stretchr/testify/require",
     "github.com/unrolled/secure",
   ]
   solver-name = "gps-cdcl"

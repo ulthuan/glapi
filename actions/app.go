@@ -3,15 +3,17 @@ package actions
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/envy"
-	"github.com/gobuffalo/mw-forcessl"
-	"github.com/gobuffalo/mw-paramlogger"
+	forcessl "github.com/gobuffalo/mw-forcessl"
+	paramlogger "github.com/gobuffalo/mw-paramlogger"
 	"github.com/unrolled/secure"
 
 	"github.com/gobuffalo/buffalo-pop/pop/popmw"
-	"github.com/gobuffalo/mw-csrf"
-	"github.com/gobuffalo/mw-i18n"
+	csrf "github.com/gobuffalo/mw-csrf"
+	i18n "github.com/gobuffalo/mw-i18n"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/ulthuan/glapi/models"
+
+	"github.com/markbates/goth/gothic"
 )
 
 // ENV is used to help switch settings based on where the
@@ -59,9 +61,18 @@ func App() *buffalo.App {
 		app.Use(translations())
 
 		app.GET("/", HomeHandler)
+		auth := app.Group("/auth")
+		app.Use(SetCurrentUser)
+		app.Use(Authorize)
+		app.Middleware.Skip(Authorize, HomeHandler)
+		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
+		auth.GET("/{provider}", bah)
+		auth.DELETE("", AuthDestroy)
+		auth.Middleware.Skip(Authorize, bah, AuthCallback)
+		auth.GET("/{provider}/callback", AuthCallback)
+		grAPI := app.Group("/api")
+		grAPI.Resource("/projects", ProjectsResource{})
 		app.Resource("/projects", ProjectsResource{})
-		gr_api := app.Group("/api")
-		gr_api.Resource("/projects", ProjectsResource{})
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
