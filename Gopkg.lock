@@ -878,7 +878,11 @@
     "github.com/gobuffalo/packr/v2",
     "github.com/gobuffalo/pop",
     "github.com/gobuffalo/suite",
+    "github.com/gobuffalo/validate",
+    "github.com/gofrs/uuid",
     "github.com/markbates/grift/grift",
+    "github.com/pkg/errors",
+    "github.com/stretchr/testify/require",
     "github.com/unrolled/secure",
   ]
   solver-name = "gps-cdcl"

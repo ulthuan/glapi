@@ -3,13 +3,13 @@ package actions
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/envy"
-	forcessl "github.com/gobuffalo/mw-forcessl"
-	paramlogger "github.com/gobuffalo/mw-paramlogger"
+	"github.com/gobuffalo/mw-forcessl"
+	"github.com/gobuffalo/mw-paramlogger"
 	"github.com/unrolled/secure"
 
 	"github.com/gobuffalo/buffalo-pop/pop/popmw"
-	csrf "github.com/gobuffalo/mw-csrf"
-	i18n "github.com/gobuffalo/mw-i18n"
+	"github.com/gobuffalo/mw-csrf"
+	"github.com/gobuffalo/mw-i18n"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/ulthuan/glapi/models"
 )
@@ -60,8 +60,8 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 		app.Resource("/projects", ProjectsResource{})
-		gr := app.Group("/api")
-		gr.Resource("/projects", ProjectsResource{})
+		gr_api := app.Group("/api")
+		gr_api.Resource("/projects", ProjectsResource{})
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
