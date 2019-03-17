@@ -65,6 +65,7 @@ func App() *buffalo.App {
 		app.Use(SetCurrentUser)
 		app.Use(Authorize)
 		app.Middleware.Skip(Authorize, HomeHandler)
+		app.Middleware.Skip(Authorize, LoginHandler)
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
 		auth.GET("/{provider}", bah)
 		auth.DELETE("", AuthDestroy)
@@ -72,6 +73,8 @@ func App() *buffalo.App {
 		auth.GET("/{provider}/callback", AuthCallback)
 		grAPI := app.Group("/api")
 		grAPI.Resource("/projects", ProjectsResource{})
+		app.GET("/login", LoginHandler)
+		app.GET("/logout", Logout)
 		app.Resource("/projects", ProjectsResource{})
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}

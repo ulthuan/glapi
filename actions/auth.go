@@ -88,3 +88,11 @@ func Authorize(next buffalo.Handler) buffalo.Handler {
 		return next(c)
 	}
 }
+
+func Logout (c buffalo.Context) error {
+	session := c.Session()
+	session.Delete("current_user")
+	session.Delete("current_user_id")
+        session.Save()
+        return c.Redirect(301, "/login")
+}
