@@ -1,0 +1,6 @@
+- id: "setting.created.success"
+  translation: "Setting was successfully created."
+- id: "setting.updated.success"
+  translation: "Setting was successfully updated."
+- id: "setting.destroyed.success"
+  translation: "Setting was successfully destroyed."

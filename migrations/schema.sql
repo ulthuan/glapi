@@ -54,6 +54,7 @@ CREATE TABLE public.scmproviders (
     name character varying(255) NOT NULL,
     user_id uuid NOT NULL,
     scmprovider_token character varying(255) NOT NULL,
+    scmprovider_id character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

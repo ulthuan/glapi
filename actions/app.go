@@ -68,11 +68,13 @@ func App() *buffalo.App {
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
 		auth.GET("/{provider}", bah)
 		auth.DELETE("", AuthDestroy)
-		auth.Middleware.Skip(Authorize, bah, AuthCallback)
-		auth.GET("/{provider}/callback", AuthCallback)
+		auth.Middleware.Skip(Authorize, bah, UserAuthCallback)
+		auth.GET("/glo/callback", UserAuthCallback)
+		auth.GET("{provider}/callback", ScmAuthCallback)
 		app.GET("/login", LoginHandler)
 		app.GET("/logout", Logout)
 		app.Resource("/projects", ProjectsResource{})
+		app.GET("/settings", UserSettings)
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 

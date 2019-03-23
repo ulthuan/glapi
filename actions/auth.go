@@ -25,7 +25,41 @@ func init() {
 	)
 }
 
-func AuthCallback(c buffalo.Context) error {
+func ScmAuthCallback(c buffalo.Context) error {
+	currentUser := c.Value("current_user").(*models.User)
+	gu, err := gothic.CompleteUserAuth(c.Response(), c.Request())
+	if err != nil {
+		return c.Error(401, err)
+	}
+	tx := c.Value("tx").(*pop.Connection)
+	if gu.Email != currentUser.Email.String {
+		return c.Error(401, errors.New("Unexpected error"))
+	}
+	findProvider := false
+	provider := &models.ScmProvider{}
+	for _, provider := range currentUser.ScmProviders {
+		if provider.Name == gu.Provider {
+			provider.ScmProviderToken = gu.AccessToken
+		}
+	}
+
+	if findProvider == false {
+		provider := &models.ScmProvider{}
+		provider.Name = gu.Provider
+		provider.ScmProviderToken = gu.AccessToken
+		provider.UserID = currentUser.ID
+		provider.ScmProviderID = gu.UserID
+	}
+
+	if err = tx.Save(provider); err != nil {
+		return errors.WithStack(err)
+	}
+
+	c.Flash().Add("success", "You Connect your account")
+	return c.Redirect(302, "/user/settings")
+}
+
+func UserAuthCallback(c buffalo.Context) error {
 	gu, err := gothic.CompleteUserAuth(c.Response(), c.Request())
 	if err != nil {
 		return c.Error(401, err)
