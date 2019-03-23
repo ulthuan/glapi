@@ -91,7 +91,13 @@ func UserAuthCallback(c buffalo.Context) error {
 	}
 
 	c.Flash().Add("success", "You have been logged in")
-	return c.Redirect(302, "/")
+	rTo := c.Session().GetOnce("login_redirect_to")
+	rToStr, ok := rTo.(string)
+	if !ok || rToStr == "" {
+		rToStr = "/"
+	}
+
+	return c.Redirect(302, rToStr)
 }
 
 func AuthDestroy(c buffalo.Context) error {
@@ -118,6 +124,7 @@ func Authorize(next buffalo.Handler) buffalo.Handler {
 	return func(c buffalo.Context) error {
 		if uid := c.Session().Get("current_user_id"); uid == nil {
 			c.Flash().Add("danger", "You must be authorized to see that page")
+			c.Session().Set("login_redirect_to", c.Request().URL.String())
 			return c.Redirect(302, "/login")
 		}
 		return next(c)
