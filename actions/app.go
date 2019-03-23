@@ -12,7 +12,6 @@ import (
 	i18n "github.com/gobuffalo/mw-i18n"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/ulthuan/glapi/models"
-
 	"github.com/markbates/goth/gothic"
 )
 

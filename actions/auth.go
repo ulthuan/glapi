@@ -11,7 +11,7 @@ import (
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/github"
-	"github.com/markbates/goth/providers/glo"
+	"github.com/ulthuan/goth/providers/glo"
 	"github.com/pkg/errors"
 	"github.com/ulthuan/glapi/models"
 )
