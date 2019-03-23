@@ -1,3 +1,11 @@
 create_table("projects") {
 	t.Column("id", "uuid", {primary: true})
+	t.Column("name", "string")
+	t.Column("user_id", "uuid")
 }
+
+add_foreign_key("user", "user_id", {"users": ["id"]}, {
+    "name": "projects_user_fk",
+    "on_delete": "CASCADE",
+    "on_update": "CASCADE",
+})

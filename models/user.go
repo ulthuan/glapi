@@ -19,6 +19,7 @@ type User struct {
 	Email      nulls.String `json:"email" db:"email"`
 	Provider   string       `json:"provider" db:"provider"`
 	ProviderID string       `json:"provider_id" db:"provider_id"`
+	Projects   []Project    `has_many:"projects" order_by:"title asc"`
 }
 
 // String is not required by pop and may be deleted

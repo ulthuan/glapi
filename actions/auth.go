@@ -11,16 +11,16 @@ import (
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/github"
-	"github.com/ulthuan/goth/providers/glo"
 	"github.com/pkg/errors"
 	"github.com/ulthuan/glapi/models"
+	"github.com/ulthuan/goth/providers/glo"
 )
 
 func init() {
 	gothic.Store = App().SessionStore
 
 	goth.UseProviders(
-		glo.New(os.Getenv("GLO_KEY"), os.Getenv("GLO_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/glo/callback"),"board:write,user:read"),
+		glo.New(os.Getenv("GLO_KEY"), os.Getenv("GLO_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/glo/callback"), "board:write,user:read"),
 		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/github/callback")),
 	)
 }
@@ -89,10 +89,10 @@ func Authorize(next buffalo.Handler) buffalo.Handler {
 	}
 }
 
-func Logout (c buffalo.Context) error {
+func Logout(c buffalo.Context) error {
 	session := c.Session()
 	session.Delete("current_user")
 	session.Delete("current_user_id")
-        session.Save()
-        return c.Redirect(301, "/login")
+	session.Save()
+	return c.Redirect(301, "/login")
 }

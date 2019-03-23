@@ -11,8 +11,8 @@ import (
 	csrf "github.com/gobuffalo/mw-csrf"
 	i18n "github.com/gobuffalo/mw-i18n"
 	"github.com/gobuffalo/packr/v2"
-	"github.com/ulthuan/glapi/models"
 	"github.com/markbates/goth/gothic"
+	"github.com/ulthuan/glapi/models"
 )
 
 // ENV is used to help switch settings based on where the
