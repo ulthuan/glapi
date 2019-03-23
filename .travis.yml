@@ -2,20 +2,9 @@ language: go
 
 go:
   - "1.11.x"
-
-addons:
-  postgresql: "10"
-  apt:
-    packages:
-    - postgresql-10
-    - postgresql-client-10
-
+  
 env:
-  global:
-    - PGUSER=postgres
-    - PGHOST=""
-    - PGPORT=5433
-    - GO_ENV=test
+  - GO_ENV=test
 
 services:
   - postgresql

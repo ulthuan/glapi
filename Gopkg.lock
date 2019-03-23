@@ -798,11 +798,11 @@
 
 [[projects]]
   branch = "feature/glo"
-  digest = "1:68d5043507f0fd495f4f6b8c018bfd2e7a0a2a1a0155723b04f46d125f65abc3"
+  digest = "1:6875a2579534d79e2416dde40a5169abd64dc53b1708093b3a94a252133edeaf"
   name = "github.com/ulthuan/goth"
   packages = ["providers/glo"]
   pruneopts = "UT"
-  revision = "13c6c3ba9a3f535c86d5c78e7d9de676f4111749"
+  revision = "5c77f4f97efad04bca74bd044458a4b820bef13a"
 
 [[projects]]
   digest = "1:9d79e011219ebcc4a7a6e89cd6126c35c6e7c9e1e9faece1b69bf521286b5a35"
