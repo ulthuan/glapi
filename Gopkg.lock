@@ -411,6 +411,14 @@
   version = "v1.3.1"
 
 [[projects]]
+  digest = "1:a63cff6b5d8b95638bfe300385d93b2a6d9d687734b863da8e09dc834510a690"
+  name = "github.com/google/go-querystring"
+  packages = ["query"]
+  pruneopts = "UT"
+  revision = "44c6ddd0a2342c386950e880b658017258da92fc"
+  version = "v1.0.0"
+
+[[projects]]
   digest = "1:c79fb010be38a59d657c48c6ba1d003a8aa651fa56b579d959d74573b7dff8e1"
   name = "github.com/gorilla/context"
   packages = ["."]
@@ -507,6 +515,14 @@
   pruneopts = "UT"
   revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
   version = "v1.0.2"
+
+[[projects]]
+  digest = "1:c34de7e8f144a065dbcd5a5dab3dfc865d406545da86cd5a654fa720abfa8126"
+  name = "github.com/levigross/grequests"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "d0df86deffcb5d344ab23de5a958d41e44659568"
+  version = "0.10"
 
 [[projects]]
   digest = "1:8ef506fc2bb9ced9b151dafa592d4046063d744c646c1bbe801982ce87e4bc24"
@@ -797,12 +813,20 @@
   version = "v1.3.0"
 
 [[projects]]
+  digest = "1:4f597ac53c145e5ae4c7b1a269c44097914218378c0f0a69dd8a5d7f3331b408"
+  name = "github.com/ulthuan/go-glo"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "7d5793304e707cfab5bdb36d802ecb73fa14b9de"
+  version = "0.0.1"
+
+[[projects]]
   branch = "feature/glo"
-  digest = "1:6875a2579534d79e2416dde40a5169abd64dc53b1708093b3a94a252133edeaf"
+  digest = "1:09bd30f7033c6eeddf3eca216342abcc1d85deac3f3d184fd93ecee8f35c2914"
   name = "github.com/ulthuan/goth"
   packages = ["providers/glo"]
   pruneopts = "UT"
-  revision = "5c77f4f97efad04bca74bd044458a4b820bef13a"
+  revision = "f354e668d99b982adeb38d50067d1b0c2e6db8dc"
 
 [[projects]]
   digest = "1:9d79e011219ebcc4a7a6e89cd6126c35c6e7c9e1e9faece1b69bf521286b5a35"
@@ -826,13 +850,15 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:45f882b5eaada06836ad2daaff340e8f0db53917d9df6b1cb4e192a30b5c9cc8"
+  digest = "1:890fdedb441b79a0cdb3bacb6ebc4b5f8b1f4491c933ef67d11704f68239f410"
   name = "golang.org/x/net"
   packages = [
     "context",
     "context/ctxhttp",
     "html",
     "html/atom",
+    "idna",
+    "publicsuffix",
   ]
   pruneopts = "UT"
   revision = "addf6b3196f61cd44ce5a76657913698c73479d0"
@@ -866,6 +892,29 @@
   ]
   pruneopts = "UT"
   revision = "f49334f85ddcf0f08d7fb6dd7363e9e6d6b777eb"
+
+[[projects]]
+  digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"
+  name = "golang.org/x/text"
+  packages = [
+    "collate",
+    "collate/build",
+    "internal/colltab",
+    "internal/gen",
+    "internal/tag",
+    "internal/triegen",
+    "internal/ucd",
+    "language",
+    "secure/bidirule",
+    "transform",
+    "unicode/bidi",
+    "unicode/cldr",
+    "unicode/norm",
+    "unicode/rangetable",
+  ]
+  pruneopts = "UT"
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
 
 [[projects]]
   branch = "master"
@@ -939,6 +988,7 @@
     "github.com/markbates/goth/providers/github",
     "github.com/markbates/grift/grift",
     "github.com/pkg/errors",
+    "github.com/ulthuan/go-glo",
     "github.com/ulthuan/goth/providers/glo",
     "github.com/unrolled/secure",
   ]

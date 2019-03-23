@@ -45,6 +45,7 @@ func AuthCallback(c buffalo.Context) error {
 	u.Name = defaults.String(gu.Name, gu.NickName)
 	u.Provider = gu.Provider
 	u.ProviderID = gu.UserID
+	u.ProviderToken = gu.AccessToken
 	u.Email = nulls.NewString(gu.Email)
 	if err = tx.Save(u); err != nil {
 		return errors.WithStack(err)
@@ -83,7 +84,7 @@ func Authorize(next buffalo.Handler) buffalo.Handler {
 	return func(c buffalo.Context) error {
 		if uid := c.Session().Get("current_user_id"); uid == nil {
 			c.Flash().Add("danger", "You must be authorized to see that page")
-			return c.Redirect(302, "/")
+			return c.Redirect(302, "/login")
 		}
 		return next(c)
 	}

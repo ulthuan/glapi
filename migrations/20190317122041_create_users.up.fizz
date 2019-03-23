@@ -4,6 +4,7 @@ create_table("users") {
 	t.Column("email", "string", {null: true})
 	t.Column("provider", "string", {})
 	t.Column("provider_id", "string", {})
+	t.Column("provider_token", "string")
 }
 
 add_foreign_key("projects", "user_id", {"users": ["id"]}, {

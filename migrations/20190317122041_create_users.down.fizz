@@ -1,1 +1,2 @@
+drop_foreign_key("projects", "projects_user_fk", {"if_exists": true})
 drop_table("users")

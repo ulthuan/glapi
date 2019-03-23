@@ -55,6 +55,7 @@ CREATE TABLE public.users (
     email character varying(255),
     provider character varying(255) NOT NULL,
     provider_id character varying(255) NOT NULL,
+    provider_token character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

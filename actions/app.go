@@ -70,8 +70,6 @@ func App() *buffalo.App {
 		auth.DELETE("", AuthDestroy)
 		auth.Middleware.Skip(Authorize, bah, AuthCallback)
 		auth.GET("/{provider}/callback", AuthCallback)
-		grAPI := app.Group("/api")
-		grAPI.Resource("/projects", ProjectsResource{})
 		app.GET("/login", LoginHandler)
 		app.GET("/logout", Logout)
 		app.Resource("/projects", ProjectsResource{})
