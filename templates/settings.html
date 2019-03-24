@@ -1,4 +1,10 @@
+
+
+<%= for (provider,value) in providers {%>
+
 <div class="ui toggle checkbox">
-    <input type="checkbox" name="public">
-    <label>GitHub</label>
+    <input type="checkbox" <%= if (value == true) {%> checked="checked" <% } %> name="public">
+    <label><%= capitalize(provider) %></label>
 </div>
+
+<% } %>

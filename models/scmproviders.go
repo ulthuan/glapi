@@ -14,8 +14,8 @@ type ScmProvider struct {
 	Name             string    `json:"name" db:"name"`
 	User             User      `belongs_to:"user"`
 	UserID           uuid.UUID `json:"user_id" db:"user_id"`
-	ScmProviderID    string    `json:"scmprovider_id" db:"provider_id"`
-	ScmProviderToken string    `db:"scmprovider_token"`
+	ScmProviderID    string    `json:"scm_provider_id" db:"scm_provider_id"`
+	ScmProviderToken string    `db:"scm_provider_token"`
 	CreatedAt        time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt        time.Time `json:"updated_at" db:"updated_at"`
 }

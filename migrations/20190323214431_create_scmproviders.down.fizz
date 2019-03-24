@@ -1,2 +1,2 @@
-drop_foreign_key("scmproviders", "scmproviders_user_fk", {"if_exists": true})
-drop_table("scmproviders")
+drop_foreign_key("scm_providers", "scm_providers_user_fk", {"if_exists": true})
+drop_table("scm_providers")

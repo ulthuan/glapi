@@ -1,13 +1,13 @@
-create_table("scmproviders") {
+create_table("scm_providers") {
 	t.Column("id", "uuid", {primary: true})
 	t.Column("name", "string")
 	t.Column("user_id","uuid")
-	t.Column("scmprovider_token", "string")
-	t.Column("scmprovider_id", "string")
+	t.Column("scm_provider_token", "string")
+	t.Column("scm_provider_id", "string")
 }
 
-add_foreign_key("scmproviders", "user_id", {"users": ["id"]}, {
-    "name": "scmproviders_user_fk",
+add_foreign_key("scm_providers", "user_id", {"users": ["id"]}, {
+    "name": "scm_providers_user_fk",
     "on_delete": "CASCADE",
     "on_update": "CASCADE",
 })

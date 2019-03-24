@@ -37,14 +37,14 @@ func ScmAuthCallback(c buffalo.Context) error {
 	}
 	findProvider := false
 	provider := &models.ScmProvider{}
-	for _, provider := range currentUser.ScmProviders {
+	for _, *provider = range currentUser.ScmProviders {
 		if provider.Name == gu.Provider {
 			provider.ScmProviderToken = gu.AccessToken
 		}
 	}
 
 	if findProvider == false {
-		provider := &models.ScmProvider{}
+		provider = &models.ScmProvider{}
 		provider.Name = gu.Provider
 		provider.ScmProviderToken = gu.AccessToken
 		provider.UserID = currentUser.ID
@@ -56,7 +56,7 @@ func ScmAuthCallback(c buffalo.Context) error {
 	}
 
 	c.Flash().Add("success", "You Connect your account")
-	return c.Redirect(302, "/user/settings")
+	return c.Redirect(302, "/settings")
 }
 
 func UserAuthCallback(c buffalo.Context) error {

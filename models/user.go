@@ -21,7 +21,7 @@ type User struct {
 	ProviderID    string       `json:"provider_id" db:"provider_id"`
 	ProviderToken string       `db:"provider_token"`
 	Projects      Projects     `has_many:"projects" order_by:"name asc"`
-	ScmProviders  ScmProviders `has_many:"scmproviders" order_by:"name asc"`
+	ScmProviders  ScmProviders `has_many:"scm_providers" order_by:"name asc"`
 }
 
 // String is not required by pop and may be deleted

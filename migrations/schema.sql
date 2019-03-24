@@ -46,21 +46,21 @@ CREATE TABLE public.schema_migration (
 ALTER TABLE public.schema_migration OWNER TO postgres;
 
 --
--- Name: scmproviders; Type: TABLE; Schema: public; Owner: postgres
+-- Name: scm_providers; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.scmproviders (
+CREATE TABLE public.scm_providers (
     id uuid NOT NULL,
     name character varying(255) NOT NULL,
     user_id uuid NOT NULL,
-    scmprovider_token character varying(255) NOT NULL,
-    scmprovider_id character varying(255) NOT NULL,
+    scm_provider_token character varying(255) NOT NULL,
+    scm_provider_id character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.scmproviders OWNER TO postgres;
+ALTER TABLE public.scm_providers OWNER TO postgres;
 
 --
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
@@ -89,11 +89,11 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: scmproviders scmproviders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: scm_providers scm_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.scmproviders
-    ADD CONSTRAINT scmproviders_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.scm_providers
+    ADD CONSTRAINT scm_providers_pkey PRIMARY KEY (id);
 
 
 --
@@ -120,11 +120,11 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: scmproviders scmproviders_user_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: scm_providers scm_providers_user_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.scmproviders
-    ADD CONSTRAINT scmproviders_user_fk FOREIGN KEY (user_id) REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ONLY public.scm_providers
+    ADD CONSTRAINT scm_providers_user_fk FOREIGN KEY (user_id) REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
