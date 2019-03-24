@@ -76,37 +76,19 @@ func (v ProjectsResource) Show(c buffalo.Context) error {
 	return c.Render(200, r.Auto(c, project))
 }
 
-// New renders the form for creating a new Project.
-// This function is mapped to the path GET /projects/new
-func (v ProjectsResource) New(c buffalo.Context) error {
-	currentUser := c.Value("current_user").(*models.User)
-	tx, ok := c.Value("tx").(*pop.Connection)
-	if !ok {
-		return errors.WithStack(errors.New("no transaction found"))
-	}
+func (v ProjectsResource) GetGloBoards(currentUser *models.User) (parseBoards form.SelectOptions){
 	g := glo.NewGloClient(currentUser.ProviderToken)
 	boards := g.GetBoards(nil)
-	parseBoards := form.SelectOptions{}
 	for _,board := range boards {
 		parseBoards = append(parseBoards,form.SelectOption{
 			Value:board.ID,
 			Label:board.Name,
 		})
 	}
-	c.Set("boards", parseBoards)
-	err := tx.Load(currentUser)
-	if err != nil {
-		return c.Error(404, err)
-	}
-	parseProviders := form.SelectOptions{}
-	for _, provider := range currentUser.ScmProviders {
-		parseProviders = append(parseProviders, form.SelectOption{
-			Value:provider.ID,
-			Label:provider.Name,
-		})
-	}
-	c.Set("providers", parseProviders)
-	parseRepos := form.SelectOptions{}
+	return
+}
+
+func (v ProjectsResource) GetScmRepos(currentUser *models.User) (parseRepos form.SelectOptions, err error) {
 	if len(currentUser.ScmProviders) > 0 {
 		firstProvider := currentUser.ScmProviders[0]
 		ctx := context.Background()
@@ -116,10 +98,8 @@ func (v ProjectsResource) New(c buffalo.Context) error {
 		tc := oauth2.NewClient(ctx, ts)
 
 		client := github.NewClient(tc)
-		repos, _, err := client.Repositories.List(ctx, "", nil)
-		if err != nil {
-			return c.Error(404, err)
-		}
+		var repos []*github.Repository
+		repos, _, err = client.Repositories.List(ctx, "", nil)
 		for _, repo  := range repos {
 			parseRepos = append(parseRepos, form.SelectOption{
 				Value:repo.ID,
@@ -127,6 +107,34 @@ func (v ProjectsResource) New(c buffalo.Context) error {
 			})
 		}
 	}
+	return
+}
+
+func (v ProjectsResource) GetScmProviders(currentUser *models.User) (parseProviders form.SelectOptions) {
+	for _, provider := range currentUser.ScmProviders {
+		parseProviders = append(parseProviders, form.SelectOption{
+			Value:provider.ID,
+			Label:provider.Name,
+		})
+	}
+	return
+}
+
+// New renders the form for creating a new Project.
+// This function is mapped to the path GET /projects/new
+func (v ProjectsResource) New(c buffalo.Context) error {
+	currentUser := c.Value("current_user").(*models.User)
+	tx, ok := c.Value("tx").(*pop.Connection)
+	if !ok {
+		return errors.WithStack(errors.New("no transaction found"))
+	}
+	c.Set("boards", v.GetGloBoards(currentUser))
+	err := tx.Load(currentUser)
+	if err != nil {
+		return c.Error(404, err)
+	}
+	c.Set("providers", v.GetScmProviders(currentUser))
+	parseRepos, err := v.GetScmRepos(currentUser)
 	c.Set("repos",parseRepos)
 	return c.Render(200, r.Auto(c, &models.Project{}))
 }
@@ -188,6 +196,16 @@ func (v ProjectsResource) Edit(c buffalo.Context) error {
 	if err := tx.Find(project, c.Param("project_id")); err != nil {
 		return c.Error(404, err)
 	}
+
+	currentUser := c.Value("current_user").(*models.User)
+	c.Set("boards", v.GetGloBoards(currentUser))
+	err := tx.Load(currentUser)
+	if err != nil {
+		return c.Error(404, err)
+	}
+	c.Set("providers", v.GetScmProviders(currentUser))
+	parseRepos, err := v.GetScmRepos(currentUser)
+	c.Set("repos",parseRepos)
 
 	return c.Render(200, r.Auto(c, project))
 }
