@@ -14,19 +14,24 @@
             <label for="selectBoard">Board</label>
             <select class="form-control" id="selectBoard">
                 <%= for (index, board) in boards { %>
-                    <option value="<%= board.ID %>""><%= board.Name %></option>
+                    <option value="<%= board.ID %>"><%= board.Name %></option>
                 <% } %>
             </select>
         </div>
         <div class="form-group col-md-2">
             <label for="selectProvider">Provider</label>
             <select class="form-control" id="selectProvider">
-                
+                <%= for (index, provider) in providers { %>
+                    <option><%= provider.Name %></option>
+                <% } %>
             </select>
         </div>
         <div class="form-group col-md-5">
-            <label for="selectRepo">Github Repo</label>
+            <label for="selectRepo">Repositories</label>
             <select class="form-control" id="selectRepo">
+                <%= for (id, repoName) in repos { %>
+                    <option value="<%= id %>"><%= repoName %></option>
+                <% } %>
             </select>
         </div>
     </div>
