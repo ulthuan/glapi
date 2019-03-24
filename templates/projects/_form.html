@@ -1,9 +1,10 @@
 <div class="form-group">
-    <label for="name">Name of the project</label>
+    <label for="project-Name">Name of the project</label>
     <input
         type="text"
         class="form-control"
-        id="name"
+        id="project-Name"
+        name="Name"
         placeholder="Enter name of the project"
     >
 </div>
@@ -11,24 +12,24 @@
 <div class="form-group">
     <div class="form-row">
         <div class="form-group col-md-5">
-            <label for="selectBoard">Board</label>
-            <select class="form-control" id="selectBoard">
+            <label for="project-BoardID">Board</label>
+            <select class="form-control" id="project-BoardID" name="BoardID">
                 <%= for (index, board) in boards { %>
                     <option value="<%= board.ID %>"><%= board.Name %></option>
                 <% } %>
             </select>
         </div>
         <div class="form-group col-md-2">
-            <label for="selectProvider">Provider</label>
-            <select class="form-control" id="selectProvider">
+            <label for="project-ScmProviderID">Provider</label>
+            <select class="form-control" id="project-ScmProviderID" name="ScmProviderID">
                 <%= for (index, provider) in providers { %>
-                    <option><%= provider.Name %></option>
+                    <option value="<%= provider.ID %>"><%= provider.Name %></option>
                 <% } %>
             </select>
         </div>
         <div class="form-group col-md-5">
-            <label for="selectRepo">Repositories</label>
-            <select class="form-control" id="selectRepo">
+            <label for="project-RepositoryID">Repositories</label>
+            <select class="form-control" id="project-RepositoryID" name="RepositoryID">
                 <%= for (id, repoName) in repos { %>
                     <option value="<%= id %>"><%= repoName %></option>
                 <% } %>

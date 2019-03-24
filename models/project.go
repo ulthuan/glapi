@@ -10,12 +10,16 @@ import (
 )
 
 type Project struct {
-	ID        uuid.UUID `json:"id" db:"id"`
-	Name      string    `json:"name" db:"name"`
-	User      User      `belongs_to:"user"`
-	UserID    uuid.UUID `json:"user_id" db:"user_id"`
-	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+	ID            uuid.UUID   `json:"id" db:"id"`
+	Name          string      `json:"name" db:"name"`
+	User          User        `belongs_to:"user"`
+	UserID        uuid.UUID   `json:"user_id" db:"user_id"`
+	BoardID       string      `json:"board_id" db:"board_id"`
+	RepositoryID  string      `json:"repository_id" db:"repository_id"`
+	ScmProvider   ScmProvider `belongs_to:"scm_provider"`
+	ScmProviderID uuid.UUID   `json:"scm_provider_id" db:"scm_provider_id"`
+	CreatedAt     time.Time   `json:"created_at" db:"created_at"`
+	UpdatedAt     time.Time   `json:"updated_at" db:"updated_at"`
 }
 
 // String is not required by pop and may be deleted

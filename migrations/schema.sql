@@ -27,6 +27,9 @@ CREATE TABLE public.projects (
     id uuid NOT NULL,
     name character varying(255) NOT NULL,
     user_id uuid NOT NULL,
+    scm_provider_id uuid NOT NULL,
+    board_id character varying(255) NOT NULL,
+    repository_id character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -109,6 +112,14 @@ ALTER TABLE ONLY public.users
 --
 
 CREATE UNIQUE INDEX schema_migration_version_idx ON public.schema_migration USING btree (version);
+
+
+--
+-- Name: projects projects_scm_providers_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.projects
+    ADD CONSTRAINT projects_scm_providers_fk FOREIGN KEY (scm_provider_id) REFERENCES public.scm_providers(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

@@ -21,7 +21,7 @@ func init() {
 
 	goth.UseProviders(
 		glo.New(os.Getenv("GLO_KEY"), os.Getenv("GLO_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/glo/callback"), "board:write,user:read"),
-		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/github/callback")),
+		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/scm/github/callback")),
 	)
 }
 

@@ -1,2 +1,3 @@
 drop_foreign_key("scm_providers", "scm_providers_user_fk", {"if_exists": true})
+drop_foreign_key("projects", "projects_scm_providers_fk", {"if_exists": true})
 drop_table("scm_providers")

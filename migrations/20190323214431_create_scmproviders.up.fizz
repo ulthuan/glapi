@@ -11,3 +11,9 @@ add_foreign_key("scm_providers", "user_id", {"users": ["id"]}, {
     "on_delete": "CASCADE",
     "on_update": "CASCADE",
 })
+
+add_foreign_key("projects", "scm_provider_id", {"scm_providers": ["id"]}, {
+	"name": "projects_scm_providers_fk",
+	"on_delete": "CASCADE",
+	"on_update": "CASCADE",
+})

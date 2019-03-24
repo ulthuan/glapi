@@ -91,6 +91,7 @@ func (v ProjectsResource) New(c buffalo.Context) error {
 		return c.Error(404, err)
 	}
 	c.Set("providers", currentUser.ScmProviders)
+	parseRepos := make(map[int64]string)
 	if len(currentUser.ScmProviders) > 0 {
 		firstProvider := currentUser.ScmProviders[0]
 		ctx := context.Background()
@@ -104,13 +105,11 @@ func (v ProjectsResource) New(c buffalo.Context) error {
 		if err != nil {
 			return c.Error(404, err)
 		}
-		parseRepos := make(map[int64]string)
 		for _, repo  := range repos {
 			parseRepos[*repo.ID] = *repo.Name
 		}
-		c.Set("repos",parseRepos)
 	}
-
+	c.Set("repos",parseRepos)
 	return c.Render(200, r.Auto(c, &models.Project{}))
 }
 
@@ -120,10 +119,14 @@ func (v ProjectsResource) Create(c buffalo.Context) error {
 	// Allocate an empty Project
 	project := &models.Project{}
 
+	currentUser := c.Value("current_user").(*models.User)
+
 	// Bind project to the html form elements
 	if err := c.Bind(project); err != nil {
 		return errors.WithStack(err)
 	}
+
+	project.UserID = currentUser.ID
 
 	// Get the DB connection from the context
 	tx, ok := c.Value("tx").(*pop.Connection)
