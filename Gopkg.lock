@@ -987,6 +987,7 @@
     "github.com/gobuffalo/pop",
     "github.com/gobuffalo/pop/nulls",
     "github.com/gobuffalo/suite",
+    "github.com/gobuffalo/tags/form",
     "github.com/gobuffalo/validate",
     "github.com/gobuffalo/validate/validators",
     "github.com/gofrs/uuid",
