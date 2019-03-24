@@ -1,39 +1,17 @@
 <div class="form-group">
-    <label for="project-Name">Name of the project</label>
-    <input
-        type="text"
-        class="form-control"
-        id="project-Name"
-        name="Name"
-        placeholder="Enter name of the project"
-    >
+    <%= f.InputTag("Name") %>
 </div>
 
 <div class="form-group">
     <div class="form-row">
         <div class="form-group col-md-5">
-            <label for="project-BoardID">Board</label>
-            <select class="form-control" id="project-BoardID" name="BoardID">
-                <%= for (index, board) in boards { %>
-                    <option value="<%= board.ID %>"><%= board.Name %></option>
-                <% } %>
-            </select>
+            <%= f.SelectTag("BoardID", {options: boards}) %>
         </div>
         <div class="form-group col-md-2">
-            <label for="project-ScmProviderID">Provider</label>
-            <select class="form-control" id="project-ScmProviderID" name="ScmProviderID">
-                <%= for (index, provider) in providers { %>
-                    <option value="<%= provider.ID %>"><%= provider.Name %></option>
-                <% } %>
-            </select>
+            <%= f.SelectTag("ScmProviderID", {options: providers}) %>
         </div>
         <div class="form-group col-md-5">
-            <label for="project-RepositoryID">Repositories</label>
-            <select class="form-control" id="project-RepositoryID" name="RepositoryID">
-                <%= for (id, repoName) in repos { %>
-                    <option value="<%= id %>"><%= repoName %></option>
-                <% } %>
-            </select>
+            <%= f.SelectTag("RepositoryID", {options: repos}) %>
         </div>
     </div>
 </div>

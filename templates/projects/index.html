@@ -12,7 +12,10 @@
   <tbody>
     <%= for (project) in projects { %>
       <tr>
-      <td>
+        <td>
+          <%= project.Name %>
+        </td>
+        <td>
           <div class="pull-right">
             <a href="<%= projectPath({ project_id: project.ID }) %>" class="btn btn-info">View</a>
             <a href="<%= editProjectPath({ project_id: project.ID }) %>" class="btn btn-warning">Edit</a>

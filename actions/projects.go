@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop"
+	"github.com/gobuffalo/tags/form"
 	"github.com/pkg/errors"
 	"github.com/ulthuan/glapi/models"
 	"github.com/ulthuan/go-glo"
@@ -85,13 +86,27 @@ func (v ProjectsResource) New(c buffalo.Context) error {
 	}
 	g := glo.NewGloClient(currentUser.ProviderToken)
 	boards := g.GetBoards(nil)
-	c.Set("boards", boards)
+	parseBoards := form.SelectOptions{}
+	for _,board := range boards {
+		parseBoards = append(parseBoards,form.SelectOption{
+			Value:board.ID,
+			Label:board.Name,
+		})
+	}
+	c.Set("boards", parseBoards)
 	err := tx.Load(currentUser)
 	if err != nil {
 		return c.Error(404, err)
 	}
-	c.Set("providers", currentUser.ScmProviders)
-	parseRepos := make(map[int64]string)
+	parseProviders := form.SelectOptions{}
+	for _, provider := range currentUser.ScmProviders {
+		parseProviders = append(parseProviders, form.SelectOption{
+			Value:provider.ID,
+			Label:provider.Name,
+		})
+	}
+	c.Set("providers", parseProviders)
+	parseRepos := form.SelectOptions{}
 	if len(currentUser.ScmProviders) > 0 {
 		firstProvider := currentUser.ScmProviders[0]
 		ctx := context.Background()
@@ -106,7 +121,10 @@ func (v ProjectsResource) New(c buffalo.Context) error {
 			return c.Error(404, err)
 		}
 		for _, repo  := range repos {
-			parseRepos[*repo.ID] = *repo.Name
+			parseRepos = append(parseRepos, form.SelectOption{
+				Value:repo.ID,
+				Label:repo.Name,
+			})
 		}
 	}
 	c.Set("repos",parseRepos)
