@@ -34,6 +34,7 @@ require (
 	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/spf13/afero v1.2.1 // indirect
+	github.com/stretchr/testify v1.3.0
 	github.com/ulthuan/go-glo v0.0.0-20190224134924-7d5793304e70
 	github.com/ulthuan/goth v1.49.1-0.20190325224223-306c7b1948c0
 	github.com/unrolled/secure v1.0.0

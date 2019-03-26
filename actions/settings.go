@@ -21,12 +21,12 @@ func UserSettings(c buffalo.Context) error {
 	}
 
 	var providers = map[string]bool{
-		"github":false,
-		"gitlab":false,
+		"github":    false,
+		"gitlab":    false,
 		"bitbucket": false,
 	}
 	for _, prov := range *scmProviders {
-		providers[prov.Name]=true
+		providers[prov.Name] = true
 	}
 
 	c.Set("providers", providers)
