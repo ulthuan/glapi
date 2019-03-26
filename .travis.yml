@@ -2,7 +2,7 @@ language: go
 
 go:
   - "1.11.x"
-  
+
 env:
   - GO_ENV=test
 
@@ -10,12 +10,13 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database glapi_test;' -U postgres
+  - psql -c 'create database glapi2_test;' -U postgres
   - mkdir -p $TRAVIS_BUILD_DIR/public/assets
+
+go_import_path: glapi
 
 install:
   - go get github.com/gobuffalo/buffalo/buffalo
-  - go get github.com/golang/dep/cmd/dep
-  - dep ensure
+  - go get $(go list ./... | grep -v /vendor/)
 
 script: buffalo test
