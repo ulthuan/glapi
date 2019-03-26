@@ -35,6 +35,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/spf13/afero v1.2.1 // indirect
 	github.com/ulthuan/go-glo v0.0.0-20190224134924-7d5793304e70
+	github.com/ulthuan/goth v1.49.1-0.20190325224223-306c7b1948c0
 	github.com/unrolled/secure v1.0.0
 	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
 	golang.org/x/net v0.0.0-20190324223953-e3b2ff56ed87 // indirect

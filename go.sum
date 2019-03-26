@@ -632,6 +632,9 @@ github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cb
 github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8/go.mod h1:VFNgLljTbGfSG7qAOspJ7OScBnGdDN/yBr0sguwnwf0=
 github.com/ulthuan/go-glo v0.0.0-20190224134924-7d5793304e70 h1:7u6YzZAAPNDoz0o4EuSBDq81b9JvJSDbVpKs4uJBSfU=
 github.com/ulthuan/go-glo v0.0.0-20190224134924-7d5793304e70/go.mod h1:rxJQ2Z5vkNs9vZHykmbbO3VdCBAwZKS9BnnJTh6OQRY=
+github.com/ulthuan/goth v1.49.0 h1:8a+KOmgCG6hQKeIQQTahX7NO6bjvaNmqft3JE4v1+RA=
+github.com/ulthuan/goth v1.49.1-0.20190325224223-306c7b1948c0 h1:rldgYGnSUjEOE/9JAOlaap36C1SWN9ic8OBi7/HOafo=
+github.com/ulthuan/goth v1.49.1-0.20190325224223-306c7b1948c0/go.mod h1:CfU++cp4l5bdEPklFzECMPyyfHGVqnhUaoa7H1CqF/Q=
 github.com/unrolled/secure v0.0.0-20180918153822-f340ee86eb8b/go.mod h1:mnPT77IAdsi/kV7+Es7y+pXALeV3h7G6dQF6mNYjcLA=
 github.com/unrolled/secure v0.0.0-20181005190816-ff9db2ff917f/go.mod h1:mnPT77IAdsi/kV7+Es7y+pXALeV3h7G6dQF6mNYjcLA=
 github.com/unrolled/secure v0.0.0-20181022170031-4b6b7cf51606/go.mod h1:mnPT77IAdsi/kV7+Es7y+pXALeV3h7G6dQF6mNYjcLA=
