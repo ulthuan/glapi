@@ -1,4 +1,12 @@
-@import "~bootstrap/scss/bootstrap.scss";
-@import "~font-awesome/css/font-awesome.css";
+//@import "~bootstrap/scss/bootstrap.scss";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "sb-admin-2.min.css";
 
-@import "buffalo"
+//@import "buffalo"
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one 🙂       */
+  display: flex;
+  align-items: center;
+}
