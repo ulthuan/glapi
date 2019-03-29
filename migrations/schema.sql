@@ -8,7 +8,7 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'SQL_ASCII';
+SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
@@ -108,8 +108,6 @@ CREATE TABLE public.webhooks (
     board_id character varying(255) NOT NULL,
     card_id character varying(255) NOT NULL,
     sender_username character varying(255) NOT NULL,
-    create_at timestamp without time zone NOT NULL,
-    update_at timestamp without time zone NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

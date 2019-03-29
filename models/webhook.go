@@ -91,9 +91,9 @@ type WebhookCardEvent struct {
 type Webhook struct {
 	ID             uuid.UUID `json:"id" db:"id"`
 	Action         string    `json:"action" db:"action"`
-	BoardID        string    `json:"board_id" db:"board_id"`
-	CardID         string    `json:"card_id" db:"card_id"`
-	SenderUsername string    `json:"sender_username" db:"sender_username"`
+	BoardID        string    `json:"board.id" db:"board_id"`
+	CardID         string    `json:"card.id" db:"card_id"`
+	SenderUsername string    `json:"sender.username" db:"sender_username"`
 	CreatedAt      time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt      time.Time `json:"updated_at" db:"updated_at"`
 }

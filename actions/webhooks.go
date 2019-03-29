@@ -76,8 +76,10 @@ func (v WebhooksResource) Create(c buffalo.Context) error {
 	// Allocate an empty Webhook
 	webhook := &models.Webhook{}
 
+	webhookcard := &models.WebhookCardEvent{}
+
 	// Bind webhook to the html form elements
-	if err := c.Bind(webhook); err != nil {
+	if err := c.Bind(webhookcard); err != nil {
 		return errors.WithStack(err)
 	}
 
@@ -86,6 +88,11 @@ func (v WebhooksResource) Create(c buffalo.Context) error {
 	if !ok {
 		return errors.WithStack(errors.New("no transaction found"))
 	}
+
+	webhook.Action = webhookcard.Action
+	webhook.BoardID = webhookcard.Board.ID
+	webhook.CardID = webhookcard.Card.ID
+	webhook.SenderUsername = webhookcard.Sender.Username
 
 	// Validate the data from the html form
 	verrs, err := tx.ValidateAndCreate(webhook)

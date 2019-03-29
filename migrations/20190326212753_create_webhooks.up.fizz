@@ -4,6 +4,4 @@ create_table("webhooks") {
 	t.Column("board_id", "string")
 	t.Column("card_id", "string")
 	t.Column("sender_username", "string")
-	t.Column("create_at", "time")
-	t.Column("update_at", "time")
 }
