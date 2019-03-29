@@ -6,7 +6,6 @@ require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/codegangsta/negroni v1.0.0 // indirect
 	github.com/gobuffalo/buffalo v0.14.2
-	github.com/gobuffalo/buffalo-goth v1.0.3 // indirect
 	github.com/gobuffalo/buffalo-plugins v1.14.0 // indirect
 	github.com/gobuffalo/buffalo-pop v1.9.0
 	github.com/gobuffalo/envy v1.6.15
@@ -34,7 +33,6 @@ require (
 	github.com/markbates/grift v1.0.5
 	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/spf13/afero v1.2.1 // indirect
 	github.com/stretchr/testify v1.3.0
 	github.com/ulthuan/go-glo v0.0.0-20190224134924-7d5793304e70
 	github.com/ulthuan/goth v1.49.1-0.20190325224223-306c7b1948c0

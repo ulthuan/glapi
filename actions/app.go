@@ -59,7 +59,6 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
-		app.GET("/", HomeHandler)
 		wh := WebhooksResource{}
 		webhook := app.Group("/webhooks")
 		webhook.GET("/", wh.List)
@@ -68,7 +67,8 @@ func App() *buffalo.App {
 		webhook.DELETE("/{webhook_id}", wh.Destroy)
 		app.Use(SetCurrentUser)
 		app.Use(Authorize)
-		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler)
+		app.GET("/", HomeHandler)
+		app.Middleware.Skip(Authorize, LoginHandler)
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
 		auth := app.Group("/auth")
 		auth.GET("/{provider}", bah)
