@@ -90,6 +90,7 @@ CREATE TABLE public.users (
     provider character varying(255) NOT NULL,
     provider_id character varying(255) NOT NULL,
     provider_token character varying(255) NOT NULL,
+    picture_url character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

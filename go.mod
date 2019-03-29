@@ -23,19 +23,21 @@ require (
 	github.com/gobuffalo/tags v2.0.16+incompatible
 	github.com/gobuffalo/validate v2.0.3+incompatible
 	github.com/gofrs/uuid v3.2.0+incompatible
+	github.com/golang/lint v0.0.0-20190227174305-8f45f776aaf1
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/jackc/pgx v3.3.0+incompatible // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/levigross/grequests v0.0.0-20180715163950-d0df86deffcb // indirect
 	github.com/markbates/going v1.0.3
-	github.com/markbates/goth v1.49.0
+	github.com/markbates/goth v1.50.0
 	github.com/markbates/grift v1.0.5
 	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/pkg/errors v0.8.1
+	github.com/spf13/afero v1.2.1 // indirect
 	github.com/stretchr/testify v1.3.0
 	github.com/ulthuan/go-glo v0.0.0-20190224134924-7d5793304e70
-	github.com/ulthuan/goth v1.49.1-0.20190325224223-306c7b1948c0
+	github.com/ulthuan/goth v1.49.1-0.20190329174748-148595ac2691
 	github.com/unrolled/secure v1.0.0
 	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
 	golang.org/x/net v0.0.0-20190324223953-e3b2ff56ed87 // indirect

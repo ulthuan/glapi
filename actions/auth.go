@@ -21,7 +21,7 @@ func init() {
 
 	goth.UseProviders(
 		glo.New(os.Getenv("GLO_KEY"), os.Getenv("GLO_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/glo/callback"), "board:write,user:read"),
-		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/scm/github/callback")),
+		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), fmt.Sprintf("%s%s", App().Host, "/auth/scm/github/callback"), "user:email"),
 	)
 }
 
@@ -40,6 +40,7 @@ func ScmAuthCallback(c buffalo.Context) error {
 	for _, *provider = range currentUser.ScmProviders {
 		if provider.Name == gu.Provider {
 			provider.ScmProviderToken = gu.AccessToken
+			findProvider = true
 		}
 	}
 
@@ -81,6 +82,7 @@ func UserAuthCallback(c buffalo.Context) error {
 	u.ProviderID = gu.UserID
 	u.ProviderToken = gu.AccessToken
 	u.Email = nulls.NewString(gu.Email)
+	u.Picture = gu.AvatarURL
 	if err = tx.Save(u); err != nil {
 		return errors.WithStack(err)
 	}
