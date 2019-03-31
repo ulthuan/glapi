@@ -6,7 +6,8 @@ require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/codegangsta/negroni v1.0.0 // indirect
 	github.com/gobuffalo/buffalo v0.14.2
-	github.com/gobuffalo/buffalo-plugins v1.14.0 // indirect
+	github.com/gobuffalo/buffalo-goth v1.0.3 // indirect
+	github.com/gobuffalo/buffalo-heroku v1.0.6 // indirect
 	github.com/gobuffalo/buffalo-pop v1.9.0
 	github.com/gobuffalo/envy v1.6.15
 	github.com/gobuffalo/fizz v1.6.1 // indirect

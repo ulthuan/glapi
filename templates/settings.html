@@ -3,10 +3,18 @@
 <%= for (provider,value) in providers {%>
 
 <div class="pretty p-switch p-fill">
-    <input type="checkbox" <%= if (value == true) {%> checked="checked" <% } %> name="<%= provider %>">
+    <input type="checkbox" <%= if (value == true) {%> checked="checked" <% } %> name="<%= provider %>" id="check_<%= provider %>">
     <div class="state">
         <label><%= capitalize(provider) %></label>
     </div>
 </div>
 
+<% } %>
+
+<% contentFor("extraStyle") { %>
+    <javascript>
+        jQuery("input[name=provider]").change(function (){
+            console.log("change")
+        })
+    </javascript>
 <% } %>
