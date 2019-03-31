@@ -43,8 +43,9 @@ func App() *buffalo.App {
 			SessionName: "_glapi_session",
 		})
 
-		app.Host, exist := os.LookupEnv("HOST_URL")
-		if exist == false {
+		var existVarIn bool
+		app.Host, existVarIn = os.LookupEnv("HOST_URL")
+		if existVarIn == false {
 			app.Host = "http://127.0.0.1:3000"
 		}
 
