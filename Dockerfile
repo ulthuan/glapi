@@ -10,10 +10,16 @@ ADD package.json .
 ADD yarn.lock .
 RUN yarn install --no-progress
 ADD . .
-RUN go get $(go list ./... | grep -v /vendor/)
-RUN buffalo build --static -o /bin/app
+#RUN go get $(go list ./... | grep -v /vendor/)
+RUN GO111MODULE=on go mod tidy
+RUN GO111MODULE=on buffalo build --static -o /bin/app
 
 FROM alpine
+RUN apk add --no-cache curl
+RUN apk add --no-cache curl
+RUN apk add --no-cache curl
+RUN apk add --no-cache curl
+RUN apk add --no-cache curl
 RUN apk add --no-cache curl
 RUN apk add --no-cache curl
 RUN apk add --no-cache bash
@@ -34,5 +40,10 @@ EXPOSE 3000
 # Uncomment to run the migrations before running the binary:
 # CMD /bin/app migrate; /bin/app
 CMD exec /bin/app
+
+
+
+
+
 
 
