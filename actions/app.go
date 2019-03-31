@@ -1,6 +1,8 @@
 package actions
 
 import (
+	"os"
+
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/envy"
 	forcessl "github.com/gobuffalo/mw-forcessl"
@@ -40,6 +42,12 @@ func App() *buffalo.App {
 			Env:         ENV,
 			SessionName: "_glapi_session",
 		})
+
+		var existVarIn bool
+		app.Host, existVarIn = os.LookupEnv("HOST_URL")
+		if existVarIn == false {
+			app.Host = "http://127.0.0.1:3000"
+		}
 
 		// Automatically redirect to SSL
 		app.Use(forceSSL())
