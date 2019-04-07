@@ -9,7 +9,19 @@
   <tbody>
     <%= for (webhook) in webhooks { %>
       <tr>
-      <td>
+        <td>
+          <%= webhook.SenderUsername %>
+        </td>
+        <td>
+          <%= webhook.Action %>
+        </td>
+        <td>
+          <%= webhook.BoardID %>
+        </td>
+        <td>
+          <%= webhook.CardID %>
+        </td>
+        <td>
           <div class="pull-right">
             <a href="<%= webhookPath({ webhook_id: webhook.ID }) %>" class="btn btn-info">View</a>
             <a href="<%= webhookPath({ webhook_id: webhook.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
