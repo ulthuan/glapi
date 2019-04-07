@@ -8,6 +8,7 @@ import (
 	"github.com/gobuffalo/pop"
 	"github.com/gobuffalo/validate"
 	"github.com/gofrs/uuid"
+	"github.com/ulthuan/go-glo"
 )
 
 type WebhookBoard struct {
@@ -111,6 +112,19 @@ type Webhooks []Webhook
 func (w Webhooks) String() string {
 	jw, _ := json.Marshal(w)
 	return string(jw)
+}
+
+// Get Board Name
+func (w Webhook) GetBoardName(currentUser *User) string {
+	g := glo.NewGloClient(currentUser.ProviderToken)
+	board := g.GetBoard(w.BoardID, nil)
+	return board.Name
+}
+
+func (w Webhook) GetCardName(currentUser *User) string {
+	g := glo.NewGloClient(currentUser.ProviderToken)
+	card := g.GetBoardCard(w.BoardID, w.CardID, nil)
+	return card.Name
 }
 
 // Validate gets run every time you call a "pop.Validate*" (pop.ValidateAndSave, pop.ValidateAndCreate, pop.ValidateAndUpdate) method.
