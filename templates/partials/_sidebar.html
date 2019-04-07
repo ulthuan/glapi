@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item <%= if ( current_path == rootPath()) {%> active <% } %>">
       <a class="nav-link" href="<%= rootPath() %>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
@@ -26,13 +26,13 @@
       Elements
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item <%= if ( current_path == projectsPath()) {%> active <% } %>">
       <a class="nav-link" href="<%= projectsPath() %>">
         <i class="fas fa-fw fa-tasks"></i>
         <span>Projects</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item <%= if ( current_path == webhooksPath()) {%> active <% } %>">
       <a class="nav-link" href="<%= webhooksPath() %>">
         <i class="fas fa-fw fa-link"></i>
         <span>WebHooks</span></a>
