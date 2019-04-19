@@ -14,7 +14,6 @@ require (
 	github.com/gobuffalo/mw-i18n v0.0.0-20190224203426-337de00e4c33
 	github.com/gobuffalo/mw-paramlogger v0.0.0-20190224201358-0d45762ab655
 	github.com/gobuffalo/nulls v0.0.0-20190305142546-85f3c9250d87
-	github.com/gobuffalo/packr v1.24.0
 	github.com/gobuffalo/packr/v2 v2.0.9
 	github.com/gobuffalo/pop v4.10.0+incompatible
 	github.com/gobuffalo/suite v2.6.1+incompatible

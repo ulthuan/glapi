@@ -9,7 +9,6 @@
     "bootstrap": "4.3.1",
     "jquery": "~3.2.1",
     "jquery-ujs": "~1.2.2",
-    "jquery.easing": "^1.4.1",
     "popper.js": "^1.14.4",
     "pretty-checkbox": "^3.0.3",
     "typeface-nunito": "^0.0.72"
