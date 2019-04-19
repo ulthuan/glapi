@@ -78,6 +78,8 @@ func (v WebhooksResource) Create(c buffalo.Context) error {
 
 	webhookcard := &models.WebhookCardEvent{}
 
+	webhookaction := &models.CardWebHook{}
+
 	// Bind webhook to the html form elements
 	if err := c.Bind(webhookcard); err != nil {
 		return errors.WithStack(err)
@@ -108,6 +110,8 @@ func (v WebhooksResource) Create(c buffalo.Context) error {
 		// correct the input.
 		return c.Render(422, r.Auto(c, webhook))
 	}
+
+	webhookaction.ExecuteAction(webhookcard)
 
 	// If there are no errors set a success message
 	c.Flash().Add("success", T.Translate(c, "webhook.created.success"))
